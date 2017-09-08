@@ -37,8 +37,8 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("0.9.25.0")]
-[assembly: AssemblyFileVersion("0.9.18.0")]
+[assembly: AssemblyVersion("0.9.26.0")]
+[assembly: AssemblyFileVersion("0.9.19.0")]
 
 // TODO: Add these back before releasing.  Right now it's unnecessary overhead.
 [assembly:

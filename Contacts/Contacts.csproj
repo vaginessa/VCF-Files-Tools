@@ -16,7 +16,7 @@
     <SccProvider>SAK</SccProvider>
     <SignAssembly>true</SignAssembly>
     <TargetFrameworkVersion>v3.0</TargetFrameworkVersion>
-    <AssemblyVersion>0.9.25.0</AssemblyVersion>
+    <AssemblyVersion>0.9.26.0</AssemblyVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
