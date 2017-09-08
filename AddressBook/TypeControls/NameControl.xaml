@@ -1,0 +1,112 @@
+﻿<UserControl x:Class="Microsoft.Communications.Contacts.Widgets.TypeControls.NameControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:widgets="clr-namespace:Microsoft.Communications.Contacts.Widgets"
+  >
+    
+  <UserControl.Resources>
+    <widgets:FrameUserTileConverter x:Key="userTileConverter"/>
+    <widgets:IsUserTilePresentConverter x:Key="hasUserTileConverter"/>
+  </UserControl.Resources>
+
+  <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="*"/>
+      <ColumnDefinition Width="Auto"/>
+    </Grid.ColumnDefinitions>
+
+    <StackPanel Orientation="Vertical">
+      <GroupBox Header="Name">
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+          </Grid.RowDefinitions>
+
+          <Label Content="Formatted Name:" Grid.Row="0" HorizontalAlignment="Right"/>
+          <!-- Most properties when they're displayed we want to wait until the user's done.
+               This property works better if it's updated as the user types. -->
+          <TextBox Grid.Column="1" Grid.Row="0"
+                   Text="{Binding Path=Name.FormattedName, UpdateSourceTrigger=PropertyChanged}"/>
+
+          <Label Content="First:" Grid.Row="1" HorizontalAlignment="Right"/>
+          <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding Path=Name.GivenName}"/>
+
+          <Label Content="Middle:" Grid.Row="2" HorizontalAlignment="Right"/>
+          <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding Path=Name.MiddleName}"/>
+
+          <Label Content="Last:" Grid.Row="3" HorizontalAlignment="Right"/>
+          <TextBox Grid.Column="1" Grid.Row="3" Text="{Binding Path=Name.FamilyName}"/>
+              
+          <Label Content="Nickname:" Grid.Row="4" HorizontalAlignment="Right"/>
+          <TextBox Grid.Column="1" Grid.Row="4"
+                   Text="{Binding Path=Name.NickName}"/>
+                   
+          <Expander Header="Additional Fields" Grid.Row="5" Grid.ColumnSpan="2">
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="2*"/>
+              </Grid.ColumnDefinitions>
+              <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+              </Grid.RowDefinitions>
+
+              <Label Content="Personal Title:" Grid.Row="0" HorizontalAlignment="Right"/>
+              <TextBox Grid.Column="1" Text="{Binding Path=Name.PersonalTitle}"/>
+
+              <Label Content="Prefix:" Grid.Row="1" HorizontalAlignment="Right"/>
+              <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding Path=Name.Prefix}"/>
+
+              <Label Content="Suffix:" Grid.Row="2" HorizontalAlignment="Right"/>
+              <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding Path=Name.Suffix}"/>
+
+              <Label Content="Generation:" Grid.Row="3" HorizontalAlignment="Right"/>
+              <TextBox Grid.Column="1" Grid.Row="3" Text="{Binding Path=Name.Generation}"/>
+
+              <Label Content="Pronunciation:" Grid.Row="4" HorizontalAlignment="Right"/>
+              <TextBox Grid.Column="1" Grid.Row="4" Text="{Binding Path=Name.Phonetic}"/>
+            </Grid>
+          </Expander>
+        </Grid>
+      </GroupBox>
+      
+      <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="1*"/>
+          <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="E-mail:" Grid.Row="0" HorizontalAlignment="Right"/>
+        <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Path=Email.Address}"/>
+      </Grid>
+    </StackPanel>
+    <StackPanel Grid.Column="1">
+      <Button Grid.Row="0" Grid.RowSpan="7" Grid.Column="2"
+            VerticalAlignment="Top" HorizontalAlignment="Stretch"
+            Margin="10, 5"
+            Click="_OnUserTileClick"
+            >
+        <Image Source="{Binding Path=UserTile, Converter={StaticResource userTileConverter}}" />
+      </Button>
+      <Button Content="Clear User Tile" Margin="10, 0" IsEnabled="{Binding Path=UserTile, Converter={StaticResource hasUserTileConverter}}"
+              Click="_OnUserTileClear"/>
+    </StackPanel>
+  </Grid>
+  
+</UserControl>

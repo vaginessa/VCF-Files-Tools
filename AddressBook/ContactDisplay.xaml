@@ -1,0 +1,162 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:widgets="clr-namespace:Microsoft.Communications.Contacts.Widgets"
+    xmlns:tc="clr-namespace:Microsoft.Communications.Contacts.Widgets.TypeControls"
+    x:Class="Microsoft.Communications.Contacts.Widgets.ContactDisplay"
+    Title="Windows Contacts"
+    Height="550" Width="490"
+    MouseLeftButtonDown="_OnMouseLeftButtonDown"
+    >
+  <Window.Resources>
+    <!-- Bluebar menu item style -->
+    <Style TargetType="{x:Type MenuItem}" BasedOn="{StaticResource {x:Type MenuItem}}">
+      <Setter Property="Foreground" Value="White"/>
+      <Setter Property="Margin" Value="3"/>
+    </Style>
+
+    <Style TargetType="{x:Type Label}" BasedOn="{StaticResource {x:Type Label}}">
+      <Setter Property="Margin" Value="4"/>
+    </Style>
+
+    <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
+      <Setter Property="Margin" Value="4"/>
+      <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+
+    <Style TargetType="{x:Type Menu}" BasedOn="{StaticResource {x:Type Menu}}">
+      <Setter Property="Background">
+        <Setter.Value>
+          <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#4B90Df" Offset="0" />
+            <GradientStop Color="#295591" Offset=".5" />
+            <GradientStop Color="#183D76" Offset="0.51" />
+            <GradientStop Color="#325F9E" Offset="1" />
+          </LinearGradientBrush>
+        </Setter.Value>
+      </Setter>
+    </Style>
+  </Window.Resources>
+
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+
+    <widgets:ContactHeader x:Name="_header" MaxHeight="120" MinHeight="20"/>
+    
+    <TabControl Grid.Row="2">
+      <TabControl.Resources>
+        <Style TargetType="{x:Type ScrollViewer}" BasedOn="{StaticResource {x:Type ScrollViewer}}">
+          <Setter Property="Padding" Value="5"/>
+        </Style>
+        <Style TargetType="{x:Type GroupBox}" BasedOn="{StaticResource {x:Type GroupBox}}">
+          <Setter Property="Margin" Value="0, 5"/>
+        </Style>
+      </TabControl.Resources>
+      <TabItem Header="Name and E-mail">
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+          <tc:NameControl/>
+        </ScrollViewer>
+      </TabItem>
+      <TabItem Header="Phone Numbers">
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+          <StackPanel Orientation="Vertical">
+            <GroupBox Header="Home Phone Numbers">
+              <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="1*"/>
+                  <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="Auto"/>
+                  <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Content="Phone:" Grid.Row="0" HorizontalAlignment="Right"/>
+                <TextBox Grid.Column="1" x:Name="_homePhoneBox"
+                         Text="{Binding Path=HomePhone.Number}"/>
+                <Label Content="Fax:" Grid.Row="1" HorizontalAlignment="Right"/>
+                <TextBox Grid.Column="1" Grid.Row="1"
+                         Text="{Binding Path=HomeFax.Number}"/>
+              </Grid>
+            </GroupBox>
+            <GroupBox Header="Work Phone Numbers">
+              <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="1*"/>
+                  <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="Auto"/>
+                  <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Content="Phone:" Grid.Row="0" HorizontalAlignment="Right"/>
+                <TextBox Grid.Column="1" Grid.Row="0" x:Name="_workPhoneBox"
+                         Text="{Binding Path=WorkPhone.Number}"/>
+
+                <Label Content="Fax:" Grid.Row="1" HorizontalAlignment="Right"/>
+                <TextBox Grid.Column="1" Grid.Row="1"
+                         Text="{Binding Path=WorkFax.Number}"/>
+              </Grid>
+            </GroupBox>
+            <GroupBox Header="Other Numbers">
+              <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="1*"/>
+                  <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="Auto"/>
+                  <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Content="Cell:" Grid.Row="0" HorizontalAlignment="Right"/>
+                <TextBox Grid.Column="1" Grid.Row="0" 
+                         Text="{Binding Path=Cellular.Number}"/>
+
+                <Label Content="Pager:" Grid.Row="1" HorizontalAlignment="Right"/>
+                <TextBox Grid.Column="1" Grid.Row="1"
+                         Text="{Binding Path=Pager.Number}"/>
+              </Grid>
+            </GroupBox>
+          </StackPanel>
+        </ScrollViewer>
+      </TabItem>
+      <TabItem Header="Websites">
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+          <tc:WebsiteControl/>
+        </ScrollViewer>
+      </TabItem>
+      <TabItem Header="Locations">
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+          <StackPanel>
+            <GroupBox Header="Home Address">
+	            <tc:AddressControl DataContext="{Binding Path=HomeAddress}"/>
+            </GroupBox>
+            <GroupBox Header="Work Address">
+	            <tc:AddressControl DataContext="{Binding Path=WorkAddress}"/>
+            </GroupBox>
+          </StackPanel>
+        </ScrollViewer>
+      </TabItem>
+      <TabItem Header="Job">
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+          <tc:JobControl/>
+        </ScrollViewer>
+      </TabItem>
+      <TabItem Header="Notes">
+        <TextBox AcceptsReturn="True" ScrollViewer.VerticalScrollBarVisibility="Auto"
+                 Text="{Binding Path=Notes}"/>
+      </TabItem>
+    </TabControl>
+    <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Right" Orientation="Horizontal">
+      <Button IsDefault="True" MinWidth="100" Margin="5" Click="_OnSaveChanges">Save Changes</Button>
+      <Button IsCancel="True" MinWidth="100" Margin="5">Cancel</Button>
+    </StackPanel>
+  </Grid>
+</Window>

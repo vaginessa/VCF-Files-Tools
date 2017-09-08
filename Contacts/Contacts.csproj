@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="15.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{161AE7C0-C32A-436C-9518-9F819733EE7F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.Communications.Contacts</RootNamespace>
+    <AssemblyName>Contacts</AssemblyName>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SignAssembly>true</SignAssembly>
+    <TargetFrameworkVersion>v3.0</TargetFrameworkVersion>
+    <AssemblyVersion>0.9.25.0</AssemblyVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisIgnoreGeneratedCode>true</CodeAnalysisIgnoreGeneratedCode>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>CODE_ANALYSIS;DEBUG;TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Compile Include="..\Standard\Debug.cs">
+      <Link>Standard\Debug.cs</Link>
+    </Compile>
+    <Compile Include="..\Standard\Interop\ErrorCodes.cs">
+      <Link>Standard\Interop\ErrorCodes.cs</Link>
+    </Compile>
+    <Compile Include="..\Standard\FileWalker.cs">
+      <Link>Standard\FileWalker.cs</Link>
+    </Compile>
+    <Compile Include="..\Standard\Interop\NativeMethods.cs">
+      <Link>Standard\Interop\NativeMethods.cs</Link>
+    </Compile>
+    <Compile Include="..\Standard\RegistryListener.cs">
+      <Link>Standard\RegistryListener.cs</Link>
+    </Compile>
+    <Compile Include="..\Standard\StreamHelper.cs">
+      <Link>Standard\StreamHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\Standard\Utilities.cs">
+      <Link>Standard\Utilities.cs</Link>
+    </Compile>
+    <Compile Include="..\Standard\Verify.cs">
+      <Link>Standard\Verify.cs</Link>
+    </Compile>
+    <Compile Include="ContactUtil.cs" />
+    <Compile Include="Exceptions\IncompatibleChangesException.cs" />
+    <Compile Include="Exceptions\InvalidStateException.cs" />
+    <Compile Include="Exceptions\PropertyNotFoundException.cs" />
+    <Compile Include="Exceptions\SchemaException.cs" />
+    <Compile Include="Exceptions\UnreachableContactException.cs" />
+    <Compile Include="Interop\ComGuids.cs" />
+    <Compile Include="Interop\ContactProvider.cs" />
+    <Compile Include="Interop\InteropUtil.cs" />
+    <Compile Include="Interop\NativeValues.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Contact.cs" />
+    <Compile Include="ContactCollectionChangedEventArgs.cs" />
+    <Compile Include="ContactId.cs" />
+    <Compile Include="ContactLoader.cs" />
+    <Compile Include="ContactManager.cs" />
+    <Compile Include="VistaContactProperties.cs" />
+    <Compile Include="ContactProperty.cs" />
+    <Compile Include="ContactPropertyChangedEventArgs.cs" />
+    <Compile Include="ContactView.cs" />
+    <Compile Include="ContactWatcher.cs" />
+    <Compile Include="Group.cs" />
+    <Compile Include="IContactProperties.cs" />
+    <Compile Include="ILabelCollection.cs" />
+    <Compile Include="ILabeledPropertyCollection.cs" />
+    <Compile Include="LabelCollection.cs" />
+    <Compile Include="MapiGroupView.cs" />
+    <Compile Include="Person.cs" />
+    <Compile Include="PropertyNameUtil.cs" />
+    <Compile Include="PropertyStrings.cs" />
+    <Compile Include="ReadonlyContactProperties.cs" />
+    <Compile Include="SchematizedLabeledPropertyCollection.cs" />
+    <Compile Include="Types.cs" />
+    <Compile Include="UserTile.cs" />
+    <Compile Include="VCard.cs" />
+    <Compile Include="WriteableContactProperties.cs" />
+    <Compile Include="Xml\ContactTree.cs" />
+    <Compile Include="Xml\XmlElementManager.cs" />
+    <Compile Include="Xml\PropertyNode.cs" />
+    <Compile Include="Xml\PropertyNodeDictionary.cs" />
+    <Compile Include="Xml\SchemaStrings.cs" />
+    <Compile Include="Xml\XmlUtil.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Files\contact.xsd" />
+    <Resource Include="Files\emptycontact.xml" />
+    <Resource Include="Files\MeOverlay.ico" />
+    <Resource Include="Files\UserTileEmpty.bmp" />
+    <Resource Include="Files\UserTileFrame16.png" />
+    <Resource Include="Files\UserTileFrame32.png" />
+    <Resource Include="Files\UserTileFrame64.png" />
+    <Resource Include="Files\UserTileFrame96.png" />
+    <Resource Include="Files\UserTileFrame128.png" />
+    <Resource Include="Files\UserTileFrame256.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Class Diagrams\Contact XML Infrastructure.cd" />
+    <None Include="Class Diagrams\Managed Contact API.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=x86" />
+    <Reference Include="PresentationFramework, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{B4F97281-0DBD-4835-9ED8-7DFB966E87FF}" />
+  </ItemGroup>
+</Project>

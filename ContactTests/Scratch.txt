@@ -1,0 +1,80 @@
+Scratchpad.
+
+This API design should be heavily scenario driven.  Common tasks should be easy, difficult tasks should be possible.  Integration with other technologies--e.g. reading/writing Shell Search metadata or LINQ type queries on Contacts, integration with CardSpace--is generally secondary to enabling specific application scenarios at this point in time.
+
+Example application scenarios:
+* Address Book UI, similar to the Shell folder in Vista or the WAB UI in XP.  This includes display of basic discrete properties and images.  This might also include the ability to print the contact list.
+* People Picker Widget, a generalized dialog that allows you to select a group of contacts.
+* Duplicate contact resolution, the ability to detect that two contacts represent the same person and consolidate their properties into a single object.  This generalizes into the ability to perform this task across entire address books.
+* Contact sync adaptor, the ability to recognize two contacts as being from the same source contact but with competing data changes in both.  This scenario is distinct from duplicate-resolution because timestamps play much more into the ability to automate this without user interaction.
+* Contact UI.  A full fidelity viewer and editor for the Contacts.  The ability for the user to extend a list of discrete properties to include metadata about fields like addresses, and the ability for 3rd parties to extend the UI to add non-standard fields like "blood type".  The ability to support object types other than strings, such as images or .wav streams, or even serialized CLR objects.
+* Import/Export to other file formats, e.g. VCard 2.1-3.
+
+Remove from this list as the tests become implemented.
+Test scenarios:
+
+Address Book UI, similar to the Shell folder in Vista or the WAB UI in XP.
+    Enumerate all contacts for a manager
+    Enumerate all contacts in a group 
+        (is a group a contact manager?
+            (not really, a group has additional contact properties also.
+            In an interface sense, they're both IEnumerable<Contact>))
+        Promote a set of (one-off) personal information into a contact.
+        Resolve a low-resolution ContactID into a Contact.
+        Distinguish between one-off contacts and full contacts.
+    Enumerate only all groups for a manager.
+        (This is different than GetEnumerator.  Should this be done through search functions?)
+    For a given contact, query basic discrete data:
+        User tile (as a System.Drawing.Bitmap?  How well does that work with WPF?)
+        Display name
+        Single e-mail address
+        List of e-mail addresses
+        Phone numbers
+        unique identifier (ContactID and path, for double-click functionality)
+    Identify the Me contact (.GetMeContact.  Don't need .IsMe if .Equals is available)
+    Change the Me contact's identity.
+    Recognize a contact's type.
+    Find a contact based on known properties (wordwheel on multiple properties)
+    Create a new contact
+    Create a new Group
+    Creation of auto-groups (basically saved search queries)
+    Convert an auto-group into a static group (a snapshot of the current search results)
+    Detect external changed to contacts considered part of the manager.
+People Picker Widget
+    Enumerate all contacts
+    Given a string, search across multiple fields in the contact collection
+        i.e. typing a couple numbers should display appropriate phone numbers accompanied by the display name 
+        typing "Jac" should show "Jack Jones" and "Jacques, Johnny"
+    When a contact is selected, it should retain the unique identifier for that contact.
+    Recognize the type of the contact.
+Contact UI.
+    Enumerate all properties in a contact, including metadata about them such as labels.
+    Set core properties to a contact.
+        Strings
+        Dates
+        Streams (? .Net Stream baseclass isn't really the same as COM IStream)
+        Images (needs to be compatible with COM's IStream implementation)
+        .Net types?
+            For structs defined in the xsd, e.g. PhysicalAddress,
+            I wonder whether it's worth it to expose them as .net types.
+            Serializing arbitrary .Net types into similar string collections
+            could be very expensive if done through reflection.  Not sure there's value in it.
+    Set arbitrary third party properties into a contact.
+    Serialize third-party data into the contact
+    Filtered property list based on labels
+
+
+--- TODO ---
+
+Duplicate contact resolution:
+    This is difficult... really should do a high level spec and design algorithms for a prototype.
+        Guessing scenarios for this isn't really appropriate.
+    Enumerate all properties in a contact.
+        Version numbers and dates for properties
+    Consolidate ContactIDs
+Contact sync adaptor:
+    This is difficult... see comments for duplicate contact resolution...
+
+Import/Export to other file formats, e.g. VCard 2.1-3.
+    Enumerate all properties in a contact.
+    Does LDAP support fall under this genre?

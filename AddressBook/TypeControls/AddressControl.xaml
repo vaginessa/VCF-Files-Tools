@@ -1,0 +1,67 @@
+<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="Microsoft.Communications.Contacts.Widgets.TypeControls.AddressControl"
+  >
+    
+  <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="1*"/>
+      <ColumnDefinition Width="2*"/>
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+
+    <Label Content="Street:" Grid.Row="0" HorizontalAlignment="Right"/>
+    <TextBox Grid.Column="1" AcceptsReturn="True"
+             Text="{Binding Path=Street}"/>
+
+    <Label Content="City:" Grid.Row="1" HorizontalAlignment="Right"/>
+    <TextBox Grid.Column="1" Grid.Row="1"
+             Text="{Binding Path=City}"/>
+
+    <Label Content="State/Province:" Grid.Row="2" HorizontalAlignment="Right"/>
+    <TextBox Grid.Column="1" Grid.Row="2"
+             Text="{Binding Path=State}"/>
+
+    <Label Content="Postal Code:" Grid.Row="3" HorizontalAlignment="Right"/>
+    <TextBox Grid.Column="1" Grid.Row="3"
+             Text="{Binding Path=ZipCode}"/>
+
+    <Label Content="Country/Region:" Grid.Row="4" HorizontalAlignment="Right"/>
+    <TextBox Grid.Column="1" Grid.Row="4"
+             Text="{Binding Path=Country}"/>
+             
+    <Expander Header="Additional Fields" Grid.Row="5" Grid.ColumnSpan="2">
+      <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="1*"/>
+          <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+    
+        <Label Content="PO Box:" Grid.Row="0" HorizontalAlignment="Right"/>
+        <TextBox Grid.Column="1" Grid.Row="0"
+                 Text="{Binding Path=POBox}"/>
+
+        <Label Content="Extended Address:" Grid.Row="1" HorizontalAlignment="Right"/>
+        <TextBox Grid.Column="1" Grid.Row="1" AcceptsReturn="True"
+                 Text="{Binding Path=ExtendedAddress}"/>
+                 
+        <Label Content="Address Label:" Grid.Row="2" HorizontalAlignment="Right"/>
+        <TextBox Grid.Column="1" Grid.Row="2" AcceptsReturn="True"
+                 Text="{Binding Path=AddressLabel}"/>
+      </Grid>
+    </Expander>
+  </Grid>
+</UserControl>

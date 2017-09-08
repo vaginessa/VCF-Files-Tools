@@ -1,0 +1,555 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Comment CommentText="The user's address book is managed by the ContactManager class.  Contacts can be enumerated, added, and removed through it.&#xD;&#xA;Individual contacts can be queried from the ContactManager, or opened directly from .contact files on disk.  The contact class supports data storage in two ways: as a flat, single element property (such as Gender), or as hierarchichal structured data (such as a physical address with street, city, country, etc.).  For data that is stored hierarchically, there can be multiple elements of each type, and each can be labeled to give contextual information about the data (such as &quot;home&quot; or &quot;work&quot;).&#xD;&#xA;There are several standard properties that are exposed as on the contact class.  The hierarchical ones are exposed as ILabeledPropertyCollections.  If the set of stock properties is insufficient for a client, the class supports property bag semantics allowing for arbitatrary third party properties to be stored on an instance.">
+    <Position X="0.5" Y="0.5" Height="1.494" Width="11.112" />
+  </Comment>
+  <Comment CommentText="Windows Contacts supports contextual tagging of properties by way of labels.  There are many predefined labels provided by the library in static classes that are separated by their intended use.&#xD;&#xA;PropertyLabels are the most generic and can apply to any property.  It includes labels for Business and Personal, as well as a general &quot;Preferred&quot;.  Preferred can be used by programs to signal which property to use, all else being equal.  ILabeledPropertyCollection's label based indexers will always return an element that's labeled Preferred over one that isn't.  Labels that are more intended to be applied to a more specific domain are separated into their own classes.&#xD;&#xA;Programs are free to define their own labels; the only requirement is that it is a url.  Standard convention is that it's the program/label pair, separated by a colon, e.g. wab:Children or wl:PassportIdentity.&#xD;&#xA;It's recommended that if an existing lael matches a need then it should be used rather than defining a new one so the data can be shared across applications.">
+    <Position X="19.724" Y="0.5" Height="2.039" Width="8.062" />
+  </Comment>
+  <Comment CommentText="For all the strongly typed read-only properties exposed in a contact there are analagous Builder objects that are writeable and are more amenable to two-way databinding.&#xD;&#xA;This is similar to the BCL's String and StringBuilder classes.">
+    <Position X="4.486" Y="11.549" Height="1.451" Width="3.76" />
+  </Comment>
+  <Class Name="Microsoft.Communications.Contacts.Contact">
+    <Position X="8.75" Y="2.75" Width="5" />
+    <Members>
+      <Field Name="_addressCollection" Hidden="true" />
+      <Field Name="_certCollection" Hidden="true" />
+      <Method Name="_CommitAddress" Hidden="true" />
+      <Method Name="_CommitAndUpdateNewContact" Hidden="true" />
+      <Method Name="_CommitCertificate" Hidden="true" />
+      <Method Name="_CommitContactId" Hidden="true" />
+      <Method Name="_CommitDate" Hidden="true" />
+      <Method Name="_CommitEmail" Hidden="true" />
+      <Method Name="_CommitIM" Hidden="true" />
+      <Method Name="_CommitName" Hidden="true" />
+      <Method Name="_CommitNumber" Hidden="true" />
+      <Method Name="_CommitPerson" Hidden="true" />
+      <Method Name="_CommitPhoto" Hidden="true" />
+      <Method Name="_CommitPosition" Hidden="true" />
+      <Method Name="_CommitUrl" Hidden="true" />
+      <Field Name="_contactIdCollection" Hidden="true" />
+      <Field Name="_contactProperties" Hidden="true" />
+      <Method Name="_CreateAddress" Hidden="true" />
+      <Method Name="_CreateCertificate" Hidden="true" />
+      <Method Name="_CreateContactId" Hidden="true" />
+      <Method Name="_CreateDate" Hidden="true" />
+      <Method Name="_CreateEmail" Hidden="true" />
+      <Method Name="_CreateIM" Hidden="true" />
+      <Method Name="_CreateName" Hidden="true" />
+      <Method Name="_CreateNumber" Hidden="true" />
+      <Method Name="_CreatePerson" Hidden="true" />
+      <Method Name="_CreatePhoto" Hidden="true" />
+      <Method Name="_CreatePosition" Hidden="true" />
+      <Method Name="_CreateUrl" Hidden="true" />
+      <Field Name="_dateCollection" Hidden="true" />
+      <Field Name="_defaultFileName" Hidden="true" />
+      <Field Name="_emailCollection" Hidden="true" />
+      <Method Name="_EnsureWriteableProperties" Hidden="true" />
+      <Field Name="_exceptionStringBadThreadId" Hidden="true" />
+      <Field Name="_extensionMap" Hidden="true" />
+      <Method Name="_GenerateUniqueFileName" Hidden="true" />
+      <Method Name="_GetExtensionsFromType" Hidden="true" />
+      <Field Name="_imCollection" Hidden="true" />
+      <Method Name="_IsMeContact" Hidden="true" />
+      <Field Name="_isStateValid" Hidden="true" />
+      <Method Name="_IsValidSingleContactType" Hidden="true" />
+      <Method Name="_MakeValidFileName" Hidden="true" />
+      <Field Name="_manager" Hidden="true" />
+      <Field Name="_nameCollection" Hidden="true" />
+      <Field Name="_numberCollection" Hidden="true" />
+      <Field Name="_originalName" Hidden="true" />
+      <Field Name="_personCollection" Hidden="true" />
+      <Field Name="_photoCollection" Hidden="true" />
+      <Field Name="_positionCollection" Hidden="true" />
+      <Field Name="_randomNumberGenerator" Hidden="true" />
+      <Method Name="_RenameContact" Hidden="true" />
+      <Method Name="_SetOrRemoveBinaryProperty" Hidden="true" />
+      <Method Name="_SetOrRemoveDateProperty" Hidden="true" />
+      <Method Name="_SetOrRemoveStringProperty" Hidden="true" />
+      <Field Name="_sharedProperties" Hidden="true" />
+      <Field Name="_sourceHash" Hidden="true" />
+      <Field Name="_stockInvalidUrl" Hidden="true" />
+      <Field Name="_type" Hidden="true" />
+      <Field Name="_typeMap" Hidden="true" />
+      <Field Name="_urlCollection" Hidden="true" />
+      <Method Name="_Validate" Hidden="true" />
+      <Method Name="Contact" Hidden="true" />
+      <Method Name="CopyToDirectory" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="GetPropertyCollection" Hidden="true" />
+      <Method Name="Invalidate" Hidden="true" />
+      <Method Name="NotifyPropertyChanged" Hidden="true" />
+      <Property Name="WriteableProperties" Hidden="true" />
+    </Members>
+    <NestedTypes>
+      <Delegate Name="Microsoft.Communications.Contacts.Contact._UniqueFileOperation" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Contact.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <AssociationLine Name="UserTile" Type="Microsoft.Communications.Contacts.UserTile" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="13.75" Y="11.666" />
+        <Point X="14.125" Y="11.666" />
+        <Point X="14.125" Y="13.7" />
+        <Point X="15" Y="13.7" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>ywRuoqAmCakAIOexgkeCSQEEyRkSxPBU8cBBmGA6CoA=</HashCode>
+      <FileName>Contact.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="UserTile" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Microsoft.Communications.Contacts.ContactManager">
+    <Position X="0.5" Y="2.75" Width="3.75" />
+    <Members>
+      <Event Name="_CollectionChangedInternal" Hidden="true" />
+      <Field Name="_contactCache" Hidden="true" />
+      <Field Name="_disposed" Hidden="true" />
+      <Field Name="_ExceptionStringBadThreadId" Hidden="true" />
+      <Method Name="_NotifyCollectionChanged" Hidden="true" />
+      <Field Name="_rootDirectory" Hidden="true" />
+      <Method Name="_Validate" Hidden="true" />
+      <Field Name="_watcher" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="IsContainedPath" Hidden="true" />
+      <Property Name="MeManager" Hidden="true" />
+    </Members>
+    <NestedTypes>
+      <Class Name="Microsoft.Communications.Contacts.ContactManager._MeManager" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ContactManager.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Lollipop Position="0.2" />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>CAAAACECJKEEEBAIAAAAhAAAgAAAAAEAggAAAgAAAAY=</HashCode>
+      <FileName>ContactManager.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Microsoft.Communications.Contacts.PropertyNames" Collapsed="true">
+    <Position X="24.75" Y="2.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>yIKhBIKsvyDDxnCcMsG8MCfKkyIADIEKDCIgBgVpoDI=</HashCode>
+      <FileName>PropertyStrings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Microsoft.Communications.Contacts.PropertyLabels">
+    <Position X="20.75" Y="2.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAEAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PropertyStrings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Microsoft.Communications.Contacts.AddressLabels">
+    <Position X="20.75" Y="4.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAACAAABAAA=</HashCode>
+      <FileName>PropertyStrings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Microsoft.Communications.Contacts.PhoneLabels">
+    <Position X="20.75" Y="6.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAhUQAAAAAAAQAAAAAAQQAAACAAAAAAAAgAAg=</HashCode>
+      <FileName>PropertyStrings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Microsoft.Communications.Contacts.PersonLabels">
+    <Position X="22.75" Y="7.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AABCAAIAAAAAAIACABEAQAgAAAAIhAAADAAgAAAAAQA=</HashCode>
+      <FileName>PropertyStrings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Microsoft.Communications.Contacts.DateLabels">
+    <Position X="22.75" Y="2.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PropertyStrings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Microsoft.Communications.Contacts.UrlLabels">
+    <Position X="22.75" Y="5.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAAAAAAAAAAgAAAQAQAAAAAAAAAA=</HashCode>
+      <FileName>PropertyStrings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Microsoft.Communications.Contacts.PhotoLabels">
+    <Position X="22.75" Y="4.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PropertyStrings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Microsoft.Communications.Contacts.CertificateBuilder" Collapsed="true">
+    <Position X="6.25" Y="3.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>BBAAAAAEAAAIAAAEAAAAAAAAgABAAIAACAAoAAIBEAA=</HashCode>
+      <FileName>Types.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Microsoft.Communications.Contacts.EmailAddressBuilder" Collapsed="true">
+    <Position X="6.25" Y="4.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAQEAAAAAAAAgAAAAIACAAAAAEYAQAA=</HashCode>
+      <FileName>Types.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Microsoft.Communications.Contacts.IMAddressBuilder" Collapsed="true">
+    <Position X="6.25" Y="5.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAUAAAAAABAgAAAAIIACAAAAAKAAAA=</HashCode>
+      <FileName>Types.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Microsoft.Communications.Contacts.NameBuilder" Collapsed="true">
+    <Position X="6.25" Y="6.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAgJIAAAAgIAAAAcBAQUAAACgAkAEKAAQCAAAgIAABA=</HashCode>
+      <FileName>Types.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Microsoft.Communications.Contacts.PhoneNumberBuilder" Collapsed="true">
+    <Position X="6.25" Y="7.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAACAAAEABAAAAgAAgAAAAAAAAAAJAAAA=</HashCode>
+      <FileName>Types.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Microsoft.Communications.Contacts.PhotoBuilder" Collapsed="true">
+    <Position X="6.25" Y="8.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>BBAAAAAAAgAAAAAEAAAAAAAAgAQAAIAACBAgAAJAEAA=</HashCode>
+      <FileName>Types.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Microsoft.Communications.Contacts.PhysicalAddressBuilder" Collapsed="true">
+    <Position X="6.25" Y="9.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAiABAMQFAACAAAgAIAEIABAAIABCIDAAA=</HashCode>
+      <FileName>Types.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Microsoft.Communications.Contacts.PositionBuilder" Collapsed="true">
+    <Position X="6.25" Y="10.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAIEAAAAEEAACIAAAkBAAAIAAAAAhBAIIKAA=</HashCode>
+      <FileName>Types.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Microsoft.Communications.Contacts.ContactCollectionChangedEventArgs">
+    <Position X="0.5" Y="8.5" Width="3.75" />
+    <Members>
+      <Field Name="_change" Hidden="true" />
+      <Field Name="_newId" Hidden="true" />
+      <Field Name="_oldId" Hidden="true" />
+      <Method Name="ContactCollectionChangedEventArgs" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAABABAAAQAAAAAAAAAAAAAAAACAAAAAAABA=</HashCode>
+      <FileName>ContactCollectionChangedEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Microsoft.Communications.Contacts.ContactPropertyChangedEventArgs">
+    <Position X="14" Y="4.75" Width="3.5" />
+    <Members>
+      <Field Name="_type" Hidden="true" />
+      <Method Name="ContactPropertyChangedEventArgs" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ContactPropertyChangedEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Microsoft.Communications.Contacts.ContactView">
+    <Position X="11.5" Y="12.5" Width="2.25" />
+    <Members>
+      <Field Name="_contact" Hidden="true" />
+      <Field Name="_disposed" Hidden="true" />
+      <Method Name="_Verify" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+    </Members>
+    <AssociationLine Name="Source" Type="Microsoft.Communications.Contacts.Contact">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="-0.992" Y="0.115" Height="0.168" Width="0.682" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAiAEACAAAAAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>ContactView.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Source" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Microsoft.Communications.Contacts.GroupView">
+    <Position X="10" Y="14" Width="3.75" />
+    <Members>
+      <Method Name="_CommitPerson" Hidden="true" />
+      <Method Name="_CreatePerson" Hidden="true" />
+      <Method Name="_ExpandEmailAddresses" Hidden="true" />
+      <Field Name="_manager" Hidden="true" />
+      <Field Name="_members" Hidden="true" />
+      <Method Name="_Validate" Hidden="true" />
+      <Method Name="GroupView" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>CAAAAgAAAAAAAABAEAAAAQAAAAAAAAAAQAIEAAAAAAA=</HashCode>
+      <FileName>Group.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Microsoft.Communications.Contacts.PersonBuilder">
+    <Position X="16.5" Y="14.5" Width="3.5" />
+    <Members>
+      <Field Name="_email" Hidden="true" />
+      <Field Name="_id" Hidden="true" />
+      <Field Name="_name" Hidden="true" />
+      <Method Name="_OnPropertyChanged" Hidden="true" />
+      <Field Name="_phone" Hidden="true" />
+      <Field Name="_preferredLabel" Hidden="true" />
+      <Method Name="PersonBuilder" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAACAAAgAAAABAAAQEgBAAAAEAAAAIIAIAABE=</HashCode>
+      <FileName>Person.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Microsoft.Communications.Contacts.MapiGroupView">
+    <Position X="6.25" Y="14" Width="3.5" />
+    <Members>
+      <Field Name="_ContactIdKey" Hidden="true" />
+      <Field Name="_contactIds" Hidden="true" />
+      <Field Name="_MapiPrefix" Hidden="true" />
+      <Field Name="_NameEmailKey" Hidden="true" />
+      <Field Name="_OneOffPrefixJunk" Hidden="true" />
+      <Field Name="_oneOffs" Hidden="true" />
+      <Method Name="MapiGroupView" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAEAAIACAAAAAAQAAAAyAAAAAAAAAQAAAAAAAAACA=</HashCode>
+      <FileName>MapiGroupView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Microsoft.Communications.Contacts.UserTile">
+    <Position X="15" Y="11.5" Width="4" />
+    <Members>
+      <Field Name="_emptyUserTileUri" Hidden="true" />
+      <Field Name="_FrameMetrics" Hidden="true" />
+      <Method Name="_GetFramedImage" Hidden="true" />
+      <Method Name="_GetImageFromPhoto" Hidden="true" />
+      <Method Name="_GetMetric" Hidden="true" />
+      <Method Name="_GetScaledRect" Hidden="true" />
+      <Field Name="_imageComposited" Hidden="true" />
+      <Field Name="_imageSource" Hidden="true" />
+      <Method Name="_NotifyPropertyChanged" Hidden="true" />
+      <Field Name="_overlay" Hidden="true" />
+      <Method Name="_UpdateImage" Hidden="true" />
+      <Method Name="UserTile" Hidden="true" />
+    </Members>
+    <NestedTypes>
+      <Struct Name="Microsoft.Communications.Contacts.UserTile.FrameMetric" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>UserTile.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AABAAAAAACAAgAAAECAEAAMIgAAJABAACCAIAAAAAAA=</HashCode>
+      <FileName>UserTile.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Struct Name="Microsoft.Communications.Contacts.Name" Collapsed="true">
+    <Position X="4.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgBIAAAAgIEAAAchASUAAACgAkAEKAAQCCgAgAIAjA=</HashCode>
+      <FileName>Types.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.1" />
+  </Struct>
+  <Struct Name="Microsoft.Communications.Contacts.Position" Collapsed="true">
+    <Position X="4.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAIEAAAAEkACCIAAAEAABAIAAAAAhBAAIKiA=</HashCode>
+      <FileName>Types.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.1" />
+  </Struct>
+  <Struct Name="Microsoft.Communications.Contacts.IMAddress" Collapsed="true">
+    <Position X="4.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAUgACAAABAAAAAAIIAAAAgQAAAAiA=</HashCode>
+      <FileName>Types.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.1" />
+  </Struct>
+  <Struct Name="Microsoft.Communications.Contacts.EmailAddress" Collapsed="true">
+    <Position X="4.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABQEgACAAAAAAAAAAIACAAAgAEQAQiA=</HashCode>
+      <FileName>Types.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.1" />
+  </Struct>
+  <Struct Name="Microsoft.Communications.Contacts.Photo" Collapsed="true">
+    <Position X="4.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BBAACAAgAAACAAAEgAAAAAAAoAAAAIAACCAgAAAAEiA=</HashCode>
+      <FileName>Types.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.1" />
+  </Struct>
+  <Struct Name="Microsoft.Communications.Contacts.PhysicalAddress" Collapsed="true">
+    <Position X="4.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAiABAcwFCACAAAAAIAAIABAAIgBCADAiA=</HashCode>
+      <FileName>Types.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.1" />
+  </Struct>
+  <Struct Name="Microsoft.Communications.Contacts.PhoneNumber" Collapsed="true">
+    <Position X="4.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAACAEgECAAAAAAAAgAIAQAAAgAABAAiA=</HashCode>
+      <FileName>Types.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.1" />
+  </Struct>
+  <Struct Name="Microsoft.Communications.Contacts.Certificate" Collapsed="true">
+    <Position X="4.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BBBAAAAAAAAIAAAEgAAAAAAAAABAAIAAAAAoAAABEiA=</HashCode>
+      <FileName>Types.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.1" />
+  </Struct>
+  <Struct Name="Microsoft.Communications.Contacts.ContactProperty">
+    <Position X="14" Y="2.75" Width="3.5" />
+    <Members>
+      <Field Name="_id" Hidden="true" />
+      <Field Name="_modified" Hidden="true" />
+      <Field Name="_name" Hidden="true" />
+      <Field Name="_nil" Hidden="true" />
+      <Field Name="_type" Hidden="true" />
+      <Field Name="_version" Hidden="true" />
+      <Method Name="ContactProperty" Hidden="true" />
+      <Method Name="Equals" Hidden="true" />
+      <Method Name="GetHashCode" Hidden="true" />
+      <Method Name="operator !=" Hidden="true" />
+      <Method Name="operator ==" Hidden="true" />
+      <Method Name="ToString" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>IAAAIAAAAAAAIEQEgABAAAQADAAAAIAAAAAiAAAAAiA=</HashCode>
+      <FileName>ContactProperty.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="1.669" />
+  </Struct>
+  <Struct Name="Microsoft.Communications.Contacts.Person">
+    <Position X="14" Y="14.5" Width="2.25" />
+    <Members>
+      <Field Name="_contactEmail" Hidden="true" />
+      <Field Name="_contactName" Hidden="true" />
+      <Field Name="_contactPhone" Hidden="true" />
+      <Field Name="_DefaultPersonStringComparison" Hidden="true" />
+      <Field Name="_EmailToken" Hidden="true" />
+      <Field Name="_explicitEmail" Hidden="true" />
+      <Field Name="_explicitName" Hidden="true" />
+      <Field Name="_explicitPhone" Hidden="true" />
+      <Field Name="_id" Hidden="true" />
+      <Field Name="_PhoneToken" Hidden="true" />
+      <Field Name="_preferredLabel" Hidden="true" />
+      <Field Name="_PreferredLabelToken" Hidden="true" />
+      <Field Name="_type" Hidden="true" />
+      <Method Name="Equals" Hidden="true" />
+      <Method Name="GenerateId" Hidden="true" />
+      <Method Name="GetHashCode" Hidden="true" />
+      <Method Name="operator !=" Hidden="true" />
+      <Method Name="operator ==" Hidden="true" />
+      <Method Name="ParseId" Hidden="true" />
+      <Method Name="Person" Hidden="true" />
+      <Method Name="ToString" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>gAACAIAgACIAAEQEgAFAgAQEQBBAAIAABEAIIgAAAiA=</HashCode>
+      <FileName>Person.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.1" />
+  </Struct>
+  <Interface Name="Microsoft.Communications.Contacts.ILabeledPropertyCollection&lt;T&gt;">
+    <Position X="14" Y="7.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AQIAAAAgAAAAAAAACAAAIAAAAAIAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>ILabeledPropertyCollection.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Microsoft.Communications.Contacts.ILabelCollection">
+    <Position X="17" Y="8" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEAAA=</HashCode>
+      <FileName>ILabelCollection.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Microsoft.Communications.Contacts.Gender" Collapsed="true">
+    <Position X="4.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Types.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Microsoft.Communications.Contacts.ContactPropertyType">
+    <Position X="17.75" Y="2.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAQAAAAAAAAAAAAAQAAAAAABEAAAA=</HashCode>
+      <FileName>ContactProperty.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Microsoft.Communications.Contacts.ContactCommitOptions">
+    <Position X="14" Y="6.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAACAQAEAAAA=</HashCode>
+      <FileName>Contact.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Microsoft.Communications.Contacts.ContactPropertyChangeType">
+    <Position X="17.75" Y="4.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>gIAAAAAAABAAgAAAAAAAABAAAQEAAAAAAIAAACAAAAQ=</HashCode>
+      <FileName>ContactPropertyChangedEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Microsoft.Communications.Contacts.ContactTypes">
+    <Position X="12.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAEAAAAAACAAAAAAAAAAAAAAAAIAAAAEAAAA=</HashCode>
+      <FileName>Contact.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Delegate Name="Microsoft.Communications.Contacts.ContactWatcherEventCallback">
+    <Position X="0.5" Y="7.5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ContactWatcher.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Font Name="Constantia" Size="9" />
+</ClassDiagram>

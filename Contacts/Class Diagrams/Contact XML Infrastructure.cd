@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Microsoft.Communications.Contacts.Xml.ContactTree" BaseTypeListCollapsed="true">
+    <Position X="4.75" Y="7.5" Width="1.75" />
+    <Members>
+      <Method Name="_BuildTree" Hidden="true" />
+      <Method Name="AssertEquals" Hidden="true" />
+      <Method Name="ContactTree" Hidden="true" />
+      <Method Name="Equals" Hidden="true" />
+      <Method Name="GetHashCode" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>QAAAAIAAAAAAAAAAgAAAIAAAAAACAIAAAABAQAAAAAA=</HashCode>
+      <FileName>Xml\ContactTree.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Lookup" />
+      <Property Name="ContactRoot" />
+      <Property Name="ExtendedRoot" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Microsoft.Communications.Contacts.Xml.XmlUtil">
+    <Position X="10" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>hAAAAAEAAAAAAAAgIAACAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Xml\XmlUtil.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Microsoft.Communications.Contacts.Xml.PropertyNode" BaseTypeListCollapsed="true">
+    <Position X="10" Y="5.5" Width="2.75" />
+    <Members>
+      <Field Name="_childrenList" Hidden="true" />
+      <Field Name="_contentType" Hidden="true" />
+      <Field Name="_EmptyLabelList" Hidden="true" />
+      <Method Name="_GetNamespaceType" Hidden="true" />
+      <Field Name="_icontactName" Hidden="true" />
+      <Field Name="_labels" Hidden="true" />
+      <Field Name="_localName" Hidden="true" />
+      <Field Name="_modificationDate" Hidden="true" />
+      <Field Name="_nsType" Hidden="true" />
+      <Field Name="_parent" Hidden="true" />
+      <Field Name="_simpleExtensionNamespace" Hidden="true" />
+      <Field Name="_simpleExtensionPrefix" Hidden="true" />
+      <Field Name="_typeAttribute" Hidden="true" />
+      <Method Name="AssertEquals" Hidden="true" />
+      <Method Name="Equals" Hidden="true" />
+      <Method Name="PropertyNode" Hidden="true" />
+      <Method Name="System.Collections.IEnumerable.GetEnumerator" Hidden="true" />
+      <Method Name="ToString" Hidden="true" />
+    </Members>
+    <NestedTypes>
+      <Enum Name="Microsoft.Communications.Contacts.Xml.PropertyNode._NamespaceType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Xml\PropertyNode.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>ICAABEACEAMAABCMiEgEUBAQBAIBAKBQBgAwQCGIACA=</HashCode>
+      <FileName>Xml\PropertyNode.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Microsoft.Communications.Contacts.Xml.PropertyNodeDictionary" BaseTypeListCollapsed="true">
+    <Position X="7.25" Y="5.5" Width="2" />
+    <Members>
+      <Property Name="_Count" Hidden="true" />
+      <Field Name="_propertyLookup" Hidden="true" />
+      <Method Name="Equals" Hidden="true" />
+      <Method Name="GetHashCode" Hidden="true" />
+      <Method Name="PropertyNodeDictionary" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAIAAAACAAAAAAAAgAAABAAAAAAAAIAAQAIAAAAAACA=</HashCode>
+      <FileName>Xml\PropertyNodeDictionary.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Microsoft.Communications.Contacts.Xml.SchemaStrings">
+    <Position X="10" Y="0.5" Width="2.25" />
+    <Members>
+      <Field Name="_CollectionNameToNodeMap" Hidden="true" />
+      <Field Name="ContactNamespace" Hidden="true" />
+      <Field Name="ContactRootElement" Hidden="true" />
+      <Field Name="ContentType" Hidden="true" />
+      <Field Name="DefaultMimeType" Hidden="true" />
+      <Field Name="ElementId" Hidden="true" />
+      <Field Name="ElementSkipList" Hidden="true" />
+      <Field Name="ExtensionsNamespace" Hidden="true" />
+      <Field Name="ExtensionsRootElement" Hidden="true" />
+      <Field Name="Label" Hidden="true" />
+      <Field Name="LabelCollection" Hidden="true" />
+      <Field Name="ModificationDate" Hidden="true" />
+      <Field Name="Nil" Hidden="true" />
+      <Field Name="NodeType" Hidden="true" />
+      <Field Name="SchemaTypeArrayElement" Hidden="true" />
+      <Field Name="SchemaTypeArrayNode" Hidden="true" />
+      <Field Name="SchemaTypeBinary" Hidden="true" />
+      <Field Name="SchemaTypeDate" Hidden="true" />
+      <Field Name="SchemaTypeString" Hidden="true" />
+      <Field Name="True" Hidden="true" />
+      <Field Name="Version" Hidden="true" />
+      <Field Name="XsiNamespace" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>IAAAACESEACAAAAAiAAAAEAgBIIAAIAAIggQAAAMAEA=</HashCode>
+      <FileName>Xml\SchemaStrings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Microsoft.Communications.Contacts.Xml.XmlElementManager">
+    <Position X="1.5" Y="7.5" Width="2.75" />
+    <Members>
+      <Field Name="_contactNamespacePrefix" Hidden="true" />
+      <Field Name="_document" Hidden="true" />
+      <Method Name="_EnsureSimpleExtensionNamespace" Hidden="true" />
+      <Field Name="_simpleExtensionMap" Hidden="true" />
+      <Field Name="_xsiNamespacePrefix" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>IIAAAAAAAEAAEAAAAAAggAAAgkAAAABAAAAQAAAAAAg=</HashCode>
+      <FileName>Xml\XmlElementManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Microsoft.Communications.Contacts.ReadonlyContactProperties">
+    <Position X="7.25" Y="0.5" Width="2.25" />
+    <Members>
+      <Field Name="_contactSchemaCache" Hidden="true" />
+      <Method Name="_Dispose" Hidden="true" />
+      <Field Name="_disposed" Hidden="true" />
+      <Method Name="_GetIterator" Hidden="true" />
+      <Method Name="_OnValidationError" Hidden="true" />
+      <Method Name="_PopName" Hidden="true" />
+      <Method Name="_PushName" Hidden="true" />
+      <Field Name="_sourceStream" Hidden="true" />
+      <Method Name="_Validate" Hidden="true" />
+      <Method Name="IContactProperties.AddLabels" Hidden="true" />
+      <Method Name="IContactProperties.ClearLabels" Hidden="true" />
+      <Method Name="IContactProperties.CreateArrayNode" Hidden="true" />
+      <Method Name="IContactProperties.DeleteArrayNode" Hidden="true" />
+      <Method Name="IContactProperties.DeleteProperty" Hidden="true" />
+      <Method Name="IContactProperties.RemoveLabel" Hidden="true" />
+      <Method Name="IContactProperties.SetBinary" Hidden="true" />
+      <Method Name="IContactProperties.SetDate" Hidden="true" />
+      <Method Name="IContactProperties.SetString" Hidden="true" />
+      <Method Name="ReadonlyContactProperties" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>CAAAIAAiALEEAQBCAACKVACQBBgAAIAAoAAEAAAACCA=</HashCode>
+      <FileName>ReadonlyContactProperties.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_contactRoot" />
+      <Field Name="_extendedRoot" />
+      <Field Name="_propertyLookup" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Microsoft.Communications.Contacts.WriteableContactProperties">
+    <Position X="2.5" Y="0.5" Width="2.25" />
+    <Members>
+      <Method Name="_AddToLabelCollection" Hidden="true" />
+      <Field Name="_ContactSchemaCache" Hidden="true" />
+      <Method Name="_CreateSchematizedArrayNode" Hidden="true" />
+      <Method Name="_CreateSimpleArrayNode" Hidden="true" />
+      <Method Name="_DeleteProperty" Hidden="true" />
+      <Method Name="_Dispose" Hidden="true" />
+      <Field Name="_document" Hidden="true" />
+      <Field Name="_EmptyContactStream" Hidden="true" />
+      <Method Name="_EnsureCollection" Hidden="true" />
+      <Method Name="_EnsureSimpleCollection" Hidden="true" />
+      <Method Name="_FindLabelCollection" Hidden="true" />
+      <Method Name="_FixupChildren" Hidden="true" />
+      <Method Name="_GetNewContact" Hidden="true" />
+      <Method Name="_IsValidContactIdCollection" Hidden="true" />
+      <Method Name="_Iterate" Hidden="true" />
+      <Field Name="_modified" Hidden="true" />
+      <Method Name="_Modify" Hidden="true" />
+      <Method Name="_OnValidationError" Hidden="true" />
+      <Method Name="_RemoveFromLabelCollection" Hidden="true" />
+      <Method Name="_SetString" Hidden="true" />
+      <Method Name="_SetUnusableOnException" Hidden="true" />
+      <Field Name="_streamHash" Hidden="true" />
+      <Method Name="_SuperExpensiveDeepValidate" Hidden="true" />
+      <Field Name="_unusable" Hidden="true" />
+      <Method Name="_Validate" Hidden="true" />
+      <Method Name="_ValidateDom" Hidden="true" />
+      <Method Name="MakeWriteableCopy" Hidden="true" />
+      <Method Name="WriteableContactProperties" Hidden="true" />
+    </Members>
+    <NestedTypes>
+      <Delegate Name="Microsoft.Communications.Contacts.WriteableContactProperties.Action" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>WriteableContactProperties.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="Microsoft.Communications.Contacts.WriteableContactProperties.Func&lt;TResult&gt;" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>WriteableContactProperties.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>CBAkABACAOEAAghAkECAVAARgJEkABBAIoswAARBDAA=</HashCode>
+      <FileName>WriteableContactProperties.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_contactTree" />
+      <Field Name="_namespaceManager" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Microsoft.Communications.Contacts.IContactProperties">
+    <Position X="0.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAABACAIEAAAAAEEAAVAAQgBAAAAAAIAEAAABACAA=</HashCode>
+      <FileName>IContactProperties.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Microsoft.Communications.Contacts.Xml.NodeTypes" Collapsed="true">
+    <Position X="1.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAQAAAAEAAAABAAAAQAAAAEAAAA=</HashCode>
+      <FileName>Xml\PropertyNode.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
