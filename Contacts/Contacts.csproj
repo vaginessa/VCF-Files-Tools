@@ -16,7 +16,7 @@
     <SccProvider>SAK</SccProvider>
     <SignAssembly>true</SignAssembly>
     <TargetFrameworkVersion>v3.0</TargetFrameworkVersion>
-    <AssemblyVersion>0.9.28.0</AssemblyVersion>
+    <AssemblyVersion>0.9.33.0</AssemblyVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -66,11 +66,11 @@
     <Compile Include="..\Standard\Debug.cs">
       <Link>Standard\Debug.cs</Link>
     </Compile>
-    <Compile Include="..\Standard\Interop\ErrorCodes.cs">
-      <Link>Standard\Interop\ErrorCodes.cs</Link>
-    </Compile>
     <Compile Include="..\Standard\FileWalker.cs">
       <Link>Standard\FileWalker.cs</Link>
+    </Compile>
+    <Compile Include="..\Standard\Interop\ErrorCodes.cs">
+      <Link>Standard\Interop\ErrorCodes.cs</Link>
     </Compile>
     <Compile Include="..\Standard\Interop\NativeMethods.cs">
       <Link>Standard\Interop\NativeMethods.cs</Link>
