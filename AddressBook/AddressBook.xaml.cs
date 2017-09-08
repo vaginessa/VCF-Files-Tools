@@ -89,7 +89,7 @@ namespace Microsoft.Communications.Contacts.Widgets
         {
             ThreadStart ts = delegate
             {
-                string newRoot = ShellProvider.SelectFolder("Choose the new Root", _contactManager.RootDirectory);
+                var newRoot = ShellProvider.SelectFolder("Choose the new Root", _contactManager.RootDirectory);
                 if (Directory.Exists(newRoot))
                 {
                     _contactManager.Dispose();
@@ -203,6 +203,7 @@ namespace Microsoft.Communications.Contacts.Widgets
             FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
             string version = fvi.FileVersion;
             this.Title += "  " + version;
+             _OnSwitchContext(null, null);
             //_sortedColumn = (GridViewColumnHeader)_view.Columns[1].Header;
             //_Sort();
         }
